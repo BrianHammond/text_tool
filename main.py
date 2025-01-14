@@ -1,8 +1,8 @@
-from class_csv import *
+from class_text import *
 
 menu = ("""
-1. Start      
-2. Write a new text file (will overwrite existing file)
+1. Write a new text file (will overwrite existing file)
+2. Append
 0. Exit  
 """)
 
@@ -16,16 +16,18 @@ while True:
 
         case 1:
             folder = input("folder: ")
-            file = input("file: ") + ".csv"
-            Initialize(folder, file).initialize()
+            file = input("file: ") + ".txt"
 
+            if not os.path.isdir(folder):
+                print(f"{folder} not found, creating folder")
+                os.makedirs(folder)
+
+            Data(folder, file, "w").data()
+        
         case 2:
             folder = input("folder: ")
-            file = input("file: ") + ".csv"
-            name = input("name: ")
-            title = input("title: ")
-            department = input("department: ")
-            Append(folder, file, name, title, department).append()
-    
+            file = input("file: ") + ".txt"
+            Data(folder, file, "a").data()
+
         case _:
             print ("pick a valid option")
