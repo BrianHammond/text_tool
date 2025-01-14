@@ -5,6 +5,7 @@
 #                 'x' will fail to write if a file already exists
 #                 'a' will append new text data
 #
+# nothing special here
 
 import os
 
