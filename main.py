@@ -1,6 +1,5 @@
 from class_text import *
 import os
-# extra stuff
 
 menu = ("""
 1. Write a new text file (will overwrite existing file)
