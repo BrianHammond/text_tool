@@ -9,13 +9,19 @@
 
 import os
 
-class Files:
+class Misc:
     def __init__(self, folder, file):
         self.folder = folder
         self.file = file
         self.full_path = folder + "/" + file
 
-class Data(Files):
+class Folder(Misc):
+    def check(self):
+        if not os.path.isdir(self.folder):
+                print(f"{self.folder} not found, creating folder")
+                os.makedirs(self.folder)
+
+class Data(Misc):
     def __init__(self, folder, file, writing_mode):
         super().__init__(folder, file)
         self.writing_mode = writing_mode

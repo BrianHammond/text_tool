@@ -7,6 +7,9 @@ menu = ("""
 0. Exit  
 """)
 
+folder = input("folder: ")
+file = input("file: ") + ".txt"
+
 while True:
     print(menu)
     choice = int(input("Enter Choice: "))
@@ -16,18 +19,10 @@ while True:
             break
 
         case 1:
-            folder = input("folder: ")
-            file = input("file: ") + ".txt"
-
-            if not os.path.isdir(folder):
-                print(f"{folder} not found, creating folder")
-                os.makedirs(folder)
-
+            Folder(folder, file).check()
             Data(folder, file, "w").data()
         
         case 2:
-            folder = input("folder: ")
-            file = input("file: ") + ".txt"
             Data(folder, file, "a").data()
 
         case _:
