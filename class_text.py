@@ -7,28 +7,27 @@
 #
 # nothing special here
 
-import os
-
 class Misc:
-    def __init__(self, folder, file):
-        self.folder = folder
-        self.file = file
-        self.full_path = folder + "/" + file
+    def __init__(self, txt_folder, txt_file):
+        self.txt_folder = txt_folder
+        self.txt_file = txt_file
+        self.txt_full_path = txt_folder + "/" + txt_file
 
-class Folder(Misc):
-    def check(self):
-        if not os.path.isdir(self.folder):
-                print(f"{self.folder} not found, creating folder")
-                os.makedirs(self.folder)
-
-class Data(Misc):
-    def __init__(self, folder, file, writing_mode):
-        super().__init__(folder, file)
+class Data_Input(Misc):
+    def __init__(self, txt_folder, txt_file, writing_mode):
+        super().__init__(txt_folder, txt_file)
         self.writing_mode = writing_mode
 
-    def data(self):
+    def data_write(self):
         txt_data = input("Type whatever you want into the text file: ")
 
-        with open(self.full_path, self.writing_mode) as file: # this will write the txt_data and create a new file, or overwrite the txt_data if file already available 
+        with open(self.txt_full_path, self.writing_mode) as file: # this will write the txt_data and create a new file, or overwrite the txt_data if file already available 
             file.write(txt_data+"\n")
-            print(f"text file {self.full_path} was created")
+            print(f"text file {self.txt_full_path} was created")
+
+    def data_read(self):
+        file_path = self.txt_full_path
+
+        with open(file_path, self.writing_mode) as file:
+            content = file.read()
+            print(content)
